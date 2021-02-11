@@ -15,8 +15,16 @@ public class MovieController {
 
     @ResponseBody
     @GetMapping("/")
-    public String helloWorld(){
-        return "Friendly Message";
+    public String hello() {
+        return "<title>MovieAnalyzer</title>\n" +
+                "<h1>Welcome to MovieAnalyzer</h1>\n" +
+                "<br>\n" +
+                "<p>Movie Analyzer has the following endpoints available:</p>\n" +
+                "<br>" +
+                "<p>localhost:8080/getFirst : Finds the first movie from the list</p>\n" +
+                "<p>localhost:8080/getRandom : Finds a single random movie from the list, and displays the title</p>\n" +
+                "<p>localhost:8080/getTenSortByPopularity : Gets 10 random movies from a data-set, sorted in ascending order by popularity</p>\n" +
+                "<p>localhost:8080/howManyWonAnAward : Prints how many of the movies from the data-set, that won an award.</p>\n";
     }
 
     @ResponseBody
@@ -25,4 +33,26 @@ public class MovieController {
         Movie firstMovieOfList = movieService.getFirstMovieOfList();
         return firstMovieOfList.getTitle();
     }
+
+    @ResponseBody
+    @GetMapping("/getRandom")
+    public String getRandom() throws FileNotFoundException {
+        Movie randomMovie = movieService.getRandomMovie();
+        return randomMovie.getTitle() + ", Year: " ;
+    }
+
+    /*
+    @ResponseBody
+    @GetMapping("/getTenSortByPopularity")
+    public String getTenSortByPopularity() {
+
+    }
+
+    @ResponseBody
+    @GetMapping("/howManyWonAnAward")
+    public String howManyWonAnAward() {
+
+    }
+
+     */
 }

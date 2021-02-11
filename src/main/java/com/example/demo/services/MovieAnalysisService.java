@@ -27,10 +27,10 @@ public class MovieAnalysisService {
         return firstMovie;
     }
 
-    public void getRandomMovie() throws FileNotFoundException {
+    public Movie getRandomMovie() throws FileNotFoundException {
         ArrayList<Movie> allMovies = new ArrayList<Movie>();
 
-        File file = new File("resources/film-new.csv");
+        File file = new File("src/main/resources/static/film-new.csv");
 
         Scanner sc = new Scanner(file);
 
@@ -43,7 +43,6 @@ public class MovieAnalysisService {
         }
         Random rand = new Random();
         int intRandom = rand.nextInt(allMovies.size()-1);
-        System.out.println(allMovies.get(intRandom));
-
+        return (allMovies.get(intRandom));
     }
 }
