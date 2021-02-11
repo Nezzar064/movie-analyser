@@ -19,7 +19,4 @@ public class Movie {
         return this.title;
     }
 
-    public int getYear() {
-        return this.year;
-    }
 }
