@@ -22,7 +22,7 @@ public class MovieAnalysisService {
         String[] firstMovieAsArray = sc.nextLine().split(";");
         //Created a model from data
         Movie firstMovie = new Movie(
-                Integer.parseInt(firstMovieAsArray[0]),Integer.parseInt(firstMovieAsArray[1]),firstMovieAsArray[2]
+                Integer.parseInt(firstMovieAsArray[0]), Integer.parseInt(firstMovieAsArray[1]), firstMovieAsArray[2]
         );
         return firstMovie;
     }
@@ -42,7 +42,30 @@ public class MovieAnalysisService {
 
         }
         Random rand = new Random();
-        int intRandom = rand.nextInt(allMovies.size()-1);
+        int intRandom = rand.nextInt(allMovies.size() - 1);
         return (allMovies.get(intRandom));
+    }
+
+    public Movie getTenRandom() throws FileNotFoundException {
+        ArrayList<Movie> allMovies = new ArrayList<Movie>();
+
+        File file = new File("src/main/resources/static/film-new.csv");
+
+        Scanner sc = new Scanner(file);
+
+        while (sc.hasNextLine()) {
+            String[] movieArr = sc.nextLine().split(";");
+
+            Movie ranMovie = new Movie(movieArr[2], Integer.parseInt(movieArr[4]));
+            allMovies.add(ranMovie);
+        }
+
+        Random rand = new Random();
+
+        for (int i = 0; i < 10; i++) {
+            int intRandom = rand.nextInt(allMovies.size() - 1);
+            return (allMovies.get(intRandom));
+        }
+
     }
 }
