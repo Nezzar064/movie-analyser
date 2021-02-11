@@ -31,10 +31,19 @@ public class Movie implements Comparable<Movie> {
         this.popularity = popularity;
     }
 
+
     public String getTitle(){
         return this.title;
     }
     public int getPopularity() { return this.popularity;}
+
+    @Override
+    public String toString() {
+        return
+                "Title: " + title + " " +
+                "Pop: " + popularity
+                ;
+    }
 
     @Override
     public int compareTo(Movie compareMovie) {

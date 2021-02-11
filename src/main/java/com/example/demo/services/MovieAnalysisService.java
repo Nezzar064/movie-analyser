@@ -25,6 +25,7 @@ public class MovieAnalysisService {
         return firstMovie;
     }
 
+
     public Movie getRandomMovie() throws FileNotFoundException {
         ArrayList<Movie> allMovies = new ArrayList<>();
 
@@ -94,6 +95,7 @@ public class MovieAnalysisService {
         for (int i = 0; i < 10; i++) {
             movieList.append(tenRandomMovies.get(i).getTitle()).append(", Popularity: ").append(tenRandomMovies.get(i).getPopularity()).append("<br>");
         }
-        return tenRandomMovies.toString();
+        return movieList.toString();
     }
+
 }
