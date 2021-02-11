@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Collections;
 
 //This is a bean - it is handled by the Spring framework
 @Controller
@@ -39,6 +41,12 @@ public class MovieController {
     public String getRandom() throws FileNotFoundException {
         Movie randomMovie = movieService.getRandomMovie();
         return randomMovie.getTitle();
+    }
+    @ResponseBody
+    @GetMapping("/getTenRandom")
+    public String getTenRandom() throws FileNotFoundException {
+        ArrayList<Movie> tenRandomMovie = movieService.getTenRandom();
+        Collections.sort(tenRandomMovie.get());
     }
 
     /*

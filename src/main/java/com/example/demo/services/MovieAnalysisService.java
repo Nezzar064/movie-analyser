@@ -4,9 +4,7 @@ import com.example.demo.models.Movie;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class MovieAnalysisService {
 
@@ -46,8 +44,8 @@ public class MovieAnalysisService {
         return (allMovies.get(intRandom));
     }
 
-    public Movie getTenRandom() throws FileNotFoundException {
-        ArrayList<Movie> allMovies = new ArrayList<Movie>();
+    public ArrayList<Movie> getTenRandom() throws FileNotFoundException {
+        ArrayList<Movie> allMovies = new ArrayList<>();
 
         File file = new File("src/main/resources/static/film-new.csv");
 
@@ -62,10 +60,11 @@ public class MovieAnalysisService {
 
         Random rand = new Random();
 
+        ArrayList<Movie> tenRanMovies = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             int intRandom = rand.nextInt(allMovies.size() - 1);
-            return (allMovies.get(intRandom));
+            tenRanMovies.add(allMovies.get(intRandom));
         }
-
+        return tenRanMovies;
     }
 }
