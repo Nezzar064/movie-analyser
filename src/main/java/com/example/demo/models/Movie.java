@@ -1,6 +1,6 @@
 package com.example.demo.models;
 
-public class Movie {
+public class Movie implements Comparable<Movie> {
     private int popularity;
     private int year;
     private int length;
@@ -25,4 +25,14 @@ public class Movie {
         return this.title;
     }
     public int getPopularity() { return this.popularity;}
+
+    @Override
+    public int compareTo(Movie compareMovie) {
+        int comparePop = ((Movie)compareMovie).popularity;
+        /* For Ascending order*/
+        return this.popularity - comparePop;
+
+        /* For Descending order do like this */
+        //return compareage-this.studentage;
+    }
 }

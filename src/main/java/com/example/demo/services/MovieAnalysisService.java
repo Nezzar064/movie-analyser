@@ -65,6 +65,7 @@ public class MovieAnalysisService {
             int intRandom = rand.nextInt(allMovies.size() - 1);
             tenRanMovies.add(allMovies.get(intRandom));
         }
+        Collections.sort(tenRanMovies);
         return tenRanMovies;
     }
 }
