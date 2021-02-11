@@ -25,40 +25,34 @@ public class MovieController {
                 "<br>" +
                 "<p>localhost:8080/getFirst : Finds the first movie from the list</p>\n" +
                 "<p>localhost:8080/getRandom : Finds a single random movie from the list, and displays the title</p>\n" +
-                "<p>localhost:8080/getTenSortByPopularity : Gets 10 random movies from a data-set, sorted in ascending order by popularity</p>\n" +
+                "<p>localhost:8080/getTenRandom : Gets 10 random movies from a data-set, sorted in ascending order by popularity</p>\n" +
                 "<p>localhost:8080/howManyWonAnAward : Prints how many of the movies from the data-set, that won an award.</p>\n";
     }
 
     @ResponseBody
     @GetMapping("/getFirst")
-    public String getFirst() throws FileNotFoundException {
+    public String getFirst() {
         Movie firstMovieOfList = movieService.getFirstMovieOfList();
-        return firstMovieOfList.getTitle();
+        return firstMovieOfList.getInfo();
     }
 
     @ResponseBody
     @GetMapping("/getRandom")
-    public String getRandom() throws FileNotFoundException {
+    public String getRandom() {
         Movie randomMovie = movieService.getRandomMovie();
-        return randomMovie.getTitle();
+        return randomMovie.getInfo();
     }
     @ResponseBody
     @GetMapping("/getTenRandom")
-    public String getTenRandom() throws FileNotFoundException {
-        MovieAnalysisService movieService = new MovieAnalysisService();
+    public String getTenRandom() {
         return movieService.getTenSortByPopularity();
     }
 
-
-
-
-
-    /*
     @ResponseBody
     @GetMapping("/howManyWonAnAward")
-    public String howManyWonAnAward() {
-
+    public int howManyWonAnAward() {
+        return movieService.howManyWonAnAward();
     }
 
-     */
+
 }

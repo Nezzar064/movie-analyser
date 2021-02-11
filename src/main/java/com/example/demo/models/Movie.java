@@ -8,50 +8,41 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Movie implements Comparable<Movie> {
-    private int popularity;
-    private int year;
-    private int length;
+    private String year;
+    private String length;
     private String title;
+    private String subject;
+    private int popularity;
+    private String awards;
 
-    public Movie(int year, int length, String title){
+    public Movie(String year, String length, String title, String subject, int popularity, String awards) {
         this.year = year;
         this.length = length;
         this.title = title;
+        this.subject = subject;
+        this.popularity = popularity;
+        this.awards = awards;
     }
 
     public Movie() {
     }
 
-    public Movie(String title) {
-        this.title = title;
-    }
-
-    public Movie(String title, int popularity) {
-        this.title = title;
-        this.popularity = popularity;
-    }
-
-
     public String getTitle(){
         return this.title;
     }
+
+    public String hasAwards() {
+        return awards;
+    }
+
+    public String getInfo(){
+        return "Score: " + this.popularity + " / Title: " + this.title + " / Awards: " + this.awards;
+    }
+
     public int getPopularity() { return this.popularity;}
 
     @Override
-    public String toString() {
-        return
-                "Title: " + title + " " +
-                "Pop: " + popularity
-                ;
-    }
-
-    @Override
     public int compareTo(Movie compareMovie) {
-        int comparePop = compareMovie.popularity;
-        /* For Ascending order*/
-        return this.popularity - comparePop;
-
-        /* For Descending order do like this */
-        //return compareage-this.studentage;
+        return Integer.compare(this.popularity, compareMovie.popularity);
     }
 }
