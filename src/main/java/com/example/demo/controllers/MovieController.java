@@ -38,7 +38,7 @@ public class MovieController {
     @GetMapping("/getRandom")
     public String getRandom() throws FileNotFoundException {
         Movie randomMovie = movieService.getRandomMovie();
-        return randomMovie.getTitle() + ", Year: " ;
+        return randomMovie.getTitle();
     }
 
     /*
