@@ -45,17 +45,15 @@ public class MovieController {
     @ResponseBody
     @GetMapping("/getTenRandom")
     public String getTenRandom() throws FileNotFoundException {
-        ArrayList<Movie> tenRandomMovie = movieService.getTenRandom();
-
+        MovieAnalysisService movieService = new MovieAnalysisService();
+        return movieService.getTenSortByPopularity();
     }
+
+
+
+
 
     /*
-    @ResponseBody
-    @GetMapping("/getTenSortByPopularity")
-    public String getTenSortByPopularity() {
-
-    }
-
     @ResponseBody
     @GetMapping("/howManyWonAnAward")
     public String howManyWonAnAward() {

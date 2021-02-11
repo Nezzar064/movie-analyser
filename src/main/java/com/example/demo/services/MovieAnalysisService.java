@@ -26,12 +26,13 @@ public class MovieAnalysisService {
     }
 
     public Movie getRandomMovie() throws FileNotFoundException {
-        ArrayList<Movie> allMovies = new ArrayList<Movie>();
+        ArrayList<Movie> allMovies = new ArrayList<>();
 
         File file = new File("src/main/resources/static/film-new.csv");
 
         Scanner sc = new Scanner(file);
-
+        sc.nextLine();
+        sc.nextLine();
         while (sc.hasNextLine()) {
             String[] movieArr = sc.nextLine().split(";");
 
@@ -43,14 +44,15 @@ public class MovieAnalysisService {
         int intRandom = rand.nextInt(allMovies.size() - 1);
         return (allMovies.get(intRandom));
     }
-
+    /*
     public ArrayList<Movie> getTenRandom() throws FileNotFoundException {
         ArrayList<Movie> allMovies = new ArrayList<>();
 
         File file = new File("src/main/resources/static/film-new.csv");
 
         Scanner sc = new Scanner(file);
-
+        sc.nextLine();
+        sc.nextLine();
         while (sc.hasNextLine()) {
             String[] movieArr = sc.nextLine().split(";");
 
@@ -67,5 +69,31 @@ public class MovieAnalysisService {
         }
         Collections.sort(tenRanMovies);
         return tenRanMovies;
+    }
+
+     */
+
+    //HOW DO WE GET POPULARITY?!
+    public String getTenSortByPopularity() throws FileNotFoundException {
+        ArrayList<Movie> tenRandomMovies = new ArrayList<>();
+
+        boolean state;
+
+        for (int i = 0; i < 10; i++) {
+            do {
+                state = false;
+                if (!(tenRandomMovies.contains(getRandomMovie()))) {
+                    tenRandomMovies.add(getRandomMovie());
+                }
+                else state = true;
+            } while (state);
+        }
+        Collections.sort(tenRandomMovies);
+
+        StringBuilder movieList = new StringBuilder();
+        for (int i = 0; i < 10; i++) {
+            movieList.append(tenRandomMovies.get(i).getTitle()).append(", Popularity: ").append(tenRandomMovies.get(i).getPopularity()).append("<br>");
+        }
+        return tenRandomMovies.toString();
     }
 }
