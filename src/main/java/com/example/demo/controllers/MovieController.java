@@ -10,7 +10,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
 
-//This is a bean - it is handled by the Spring framework
+
 @Controller
 public class MovieController {
     MovieAnalysisService movieService = new MovieAnalysisService();
