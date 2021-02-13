@@ -33,11 +33,11 @@ public class MovieAnalysisService {
             String[] firstMovieAsArray = fileSc.nextLine().split(";");
 
             Movie temp = new Movie(
-                    firstMovieAsArray[0],   // year
-                    firstMovieAsArray[1],   // length
-                    firstMovieAsArray[2],   // title
-                    firstMovieAsArray[3],   // subject
-                    Integer.parseInt(firstMovieAsArray[4]),       // popularity
+                    firstMovieAsArray[0],
+                    firstMovieAsArray[1],
+                    firstMovieAsArray[2],
+                    firstMovieAsArray[3],
+                    Integer.parseInt(firstMovieAsArray[4]),
                     firstMovieAsArray[5]    // awards
 
             //0 = year, 1 = length, 2 = title, 3 = subject, 4 = popularity, 5 = awards
