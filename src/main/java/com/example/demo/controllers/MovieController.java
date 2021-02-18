@@ -15,6 +15,8 @@ import java.util.Collections;
 public class MovieController {
     MovieAnalysisService movieService = new MovieAnalysisService();
 
+    private final String goBack = "<br><a href=http://localhost:8080>Go to front page</a>";
+
     @ResponseBody
     @GetMapping("/")
     public String hello() {
@@ -23,35 +25,36 @@ public class MovieController {
                 "<br>\n" +
                 "<p>Movie Analyzer has the following endpoints available:</p>\n" +
                 "<br>" +
-                "<p>localhost:8080/getFirst : Finds the first movie from the list</p>\n" +
-                "<p>localhost:8080/getRandom : Finds a single random movie from the list, and displays the title</p>\n" +
-                "<p>localhost:8080/getTenRandom : Gets 10 random movies from a data-set, sorted in ascending order by popularity</p>\n" +
-                "<p>localhost:8080/howManyWonAnAward : Prints how many of the movies from the data-set, that won an award.</p>\n";
+                "<p>1. </p><a href=http://localhost:8080/getFirst> Finds the first movie from the list</a><br>" +
+                "<p>2. </p><a href=http://localhost:8080/getRandom> Finds a single random movie from the list, and displays the title</a><br>" +
+                "<p>3. </p><a href=http://localhost:8080/getTenRandom> Gets 10 random movies from a data-set, sorted in ascending order by popularity</a><br>" +
+                "<p>4. </p><a href=http://localhost:8080/howManyWonAnAward> Prints how many of the movies from the data-set, that won an award.</a>";
+
     }
 
     @ResponseBody
     @GetMapping("/getFirst")
     public String getFirst() {
         Movie firstMovieOfList = movieService.getFirstMovieOfList();
-        return firstMovieOfList.getInfo();
+        return firstMovieOfList.getInfo() + goBack;
     }
 
     @ResponseBody
     @GetMapping("/getRandom")
     public String getRandom() {
         Movie randomMovie = movieService.getRandomMovie();
-        return randomMovie.getInfo();
+        return randomMovie.getInfo() + goBack;
     }
     @ResponseBody
     @GetMapping("/getTenRandom")
     public String getTenRandom() {
-        return movieService.getTenSortByPopularity();
+        return movieService.getTenSortByPopularity() + goBack;
     }
 
     @ResponseBody
     @GetMapping("/howManyWonAnAward")
-    public int howManyWonAnAward() {
-        return movieService.howManyWonAnAward();
+    public String howManyWonAnAward() {
+        return movieService.howManyWonAnAward() + goBack;
     }
 
 
