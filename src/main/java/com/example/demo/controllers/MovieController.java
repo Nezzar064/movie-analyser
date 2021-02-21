@@ -18,7 +18,7 @@ public class MovieController {
     private final String goBack = "<br><a href=http://localhost:8080>Go to front page</a>";
 
     @ResponseBody
-    @GetMapping("/")
+    @GetMapping("/movieAnalyzer")
     public String hello() {
         return "<title>MovieAnalyzer</title>\n" +
                 "<h1>Welcome to MovieAnalyzer</h1>\n" +
